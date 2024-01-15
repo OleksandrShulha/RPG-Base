@@ -158,7 +158,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 51781b7a9c44846c88974f414e5272a3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -178,11 +178,12 @@ Transform:
   m_GameObject: {fileID: 275117251}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.24, z: 0}
+  m_LocalPosition: {x: 2.07, y: -5.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1583069007}
+  - {fileID: 1795801554}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &275117256
@@ -197,12 +198,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a62c2a103fa64f31a82b91c2724795d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpPower: 13
-  groundCheckDistanse: 1.1
+  groundCheckDistanse: 0.14
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  groundCkeck: {fileID: 1795801554}
+  moveSpeed: 8
+  jumpPower: 13
+  dashDuration: 0.4
+  dashTime: 0
+  speedDash: 16
 --- !u!70 &275117257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -362,7 +367,7 @@ Transform:
   m_GameObject: {fileID: 296106943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 6.46, y: -2.55, z: 0}
+  m_LocalPosition: {x: 14, y: -1.65, z: 0}
   m_LocalScale: {x: 13.19222, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -429,7 +434,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -584,8 +589,8 @@ Transform:
   m_GameObject: {fileID: 1204236887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -3.76, z: 0}
-  m_LocalScale: {x: 13.19222, y: 1, z: 1}
+  m_LocalPosition: {x: -0.8162, y: -6.7291, z: 0}
+  m_LocalScale: {x: 29.92523, y: 1.1383, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -601,6 +606,7 @@ GameObject:
   - component: {fileID: 1583069007}
   - component: {fileID: 1583069008}
   - component: {fileID: 1583069009}
+  - component: {fileID: 1583069010}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -696,6 +702,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1583069010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583069006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd59a2dadb8d40ab9da0f18ef0366d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1795801553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795801554}
+  m_Layer: 0
+  m_Name: GroundCkech
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1795801554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795801553}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.956, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 275117255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

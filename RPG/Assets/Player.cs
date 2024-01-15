@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entety
 {
     private float xInput;
-    private Rigidbody2D rb;
-    private Animator anim;
-    private int facingDir = 1;
-    private bool facingRight = true;
-    private bool isGrounded;
+
 
     [Header("Other")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpPower = 5f;
-    [Header("Collision info and Jump")]
-    [SerializeField] private float groundCheckDistanse;
-    [SerializeField] private LayerMask whatIsGround;
+ 
 
     [Header("Dashes")]
     [SerializeField] private float dashDuration;
@@ -27,26 +21,19 @@ public class Player : MonoBehaviour
     private bool isAtack;
     private int comboCounter;
 
-
-
-
-
-
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
+        base.Start();
     }
 
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         MoveControler();
         AnimationControler();
         FlipControler();
-
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistanse, whatIsGround);
-
         dashTime -= Time.deltaTime;
     }
 
@@ -113,12 +100,7 @@ public class Player : MonoBehaviour
 
     }
 
-    private void Flip()
-    {
-        facingDir = facingDir * -1;
-        facingRight = !facingRight;
-        transform.Rotate(0, 180, 0);
-    }
+
 
     private void FlipControler()
     {
@@ -130,10 +112,5 @@ public class Player : MonoBehaviour
         {
             Flip();
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistanse));
     }
 }
