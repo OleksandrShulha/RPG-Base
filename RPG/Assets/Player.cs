@@ -18,6 +18,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundCheckDistanse;
     [SerializeField] private LayerMask whatIsGround;
 
+    [Header("Dashes")]
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashTime;
+    [SerializeField] private float speedDash;
+
+    [Header("Atack info")]
+    private bool isAtack;
+    private int comboCounter;
+
+
 
 
 
@@ -36,16 +46,50 @@ public class Player : MonoBehaviour
         FlipControler();
 
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistanse, whatIsGround);
+
+        dashTime -= Time.deltaTime;
     }
 
     private void MoveControler()
     {
         xInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && isGrounded)
+        {
+            dashTime = dashDuration;
+        }
+
+        if(dashTime > 0)
+        {
+            rb.velocity = new Vector2(xInput * speedDash, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            isAtack = true;
+            comboCounter = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            isAtack = true;
+            comboCounter = 1;
+        }
+    }
+
+    public void AtackOver()
+    {
+        isAtack = false;
     }
 
     private void Jump()
@@ -58,6 +102,15 @@ public class Player : MonoBehaviour
     {
         bool isMoving = xInput != 0;
         anim.SetBool("isMove", isMoving);
+        anim.SetBool("isGround", isGrounded);
+        anim.SetBool("isDash", dashTime > 0);
+
+        anim.SetBool("isAtack", isAtack);
+        anim.SetInteger("comboCounter", comboCounter);
+
+
+
+
     }
 
     private void Flip()
