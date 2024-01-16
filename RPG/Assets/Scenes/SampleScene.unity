@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 275117252}
   - component: {fileID: 275117257}
   - component: {fileID: 275117256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Playr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,10 +199,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckDistanse: 0.14
+  wallCheckDistanse: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   groundCkeck: {fileID: 1795801554}
+  wallCkeck: {fileID: 0}
   moveSpeed: 8
   jumpPower: 13
   dashDuration: 0.4
@@ -463,12 +465,13 @@ Transform:
   m_GameObject: {fileID: 503113342}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.89, y: -3.21, z: 0}
+  m_LocalPosition: {x: -7.89, y: -4.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1542056844}
   - {fileID: 1633920003}
+  - {fileID: 1404219150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &503113346
@@ -484,11 +487,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckDistanse: 0.18
+  wallCheckDistanse: 1.23
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   groundCkeck: {fileID: 1633920003}
+  wallCkeck: {fileID: 1404219150}
   moveSpeed: 1
+  playrChekDistanse: 6.48
+  whatIsPlayr:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +714,7 @@ Transform:
   m_GameObject: {fileID: 730958471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.3743, y: -6.383, z: 0}
+  m_LocalPosition: {x: 0.3743, y: 1.55, z: 0}
   m_LocalScale: {x: 3.726802, y: 7.301339, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -970,6 +979,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1404219149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404219150}
+  m_Layer: 0
+  m_Name: WallCkech
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1404219150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404219149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 503113345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542056843
 GameObject:
